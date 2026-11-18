@@ -1,0 +1,54 @@
+name: 漏掉的觀點
+description: 某一方公開說過的理由或說法，文章沒有收錄
+title: "[觀點] "
+labels: ["漏掉的觀點"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本站盡量讓各方用自己公開說過的話表達理由。如果你發現某一方的說法沒被收錄，請附上他們公開說過的出處。
+        這裡收錄的是「誰公開說過什麼」，整理者會用同一套方式補進文章，不替任何一方改寫。
+  - type: dropdown
+    id: page
+    attributes:
+      label: 哪一頁？
+      options:
+        - 首頁（議題中心）
+        - 嚇阻、和解，誰讓台灣更危險？（war）
+        - 「逢中必反、逢交流必擋」（exchange）
+        - 「投藍白就是投共產黨！」（label）
+        - 「假反共真戰爭」（anti-communism）
+        - 「九二共識就是一國兩制」（consensus）
+        - 「藍白拿預算當人質」（budget）
+        - 「明明抓到的共諜都是政府官員…」（legislators）
+        - 國防預算，到底在吵什麼？（defense）
+        - 防滲透，會不會管太多？（infiltration）
+        - 全站／不限一篇
+    validations:
+      required: true
+  - type: input
+    id: who
+    attributes:
+      label: 誰說的？
+      description: 人名、政黨、機關或團體。
+    validations:
+      required: true
+  - type: textarea
+    id: view
+    attributes:
+      label: 漏掉的說法
+      description: 盡量貼原話；如果是報導轉述，請註明。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 出處
+      description: 可以公開查到的連結。
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: 建議放在哪一段？（選填）

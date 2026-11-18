@@ -1,0 +1,35 @@
+name: 網站問題
+description: 版面跑掉、按鈕或連結點不了、手機上看不清楚等
+title: "[網站] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: page
+    attributes:
+      label: 哪一頁？
+      options:
+        - 首頁（議題中心）
+        - 嚇阻、和解，誰讓台灣更危險？（war）
+        - 「逢中必反、逢交流必擋」（exchange）
+        - 「投藍白就是投共產黨！」（label）
+        - 「假反共真戰爭」（anti-communism）
+        - 「九二共識就是一國兩制」（consensus）
+        - 「藍白拿預算當人質」（budget）
+        - 「明明抓到的共諜都是政府官員…」（legislators）
+        - 國防預算，到底在吵什麼？（defense）
+        - 防滲透，會不會管太多？（infiltration）
+        - 全站／不限一篇
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 發生了什麼事？
+      description: 可以直接貼截圖。
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 用什麼裝置和瀏覽器看的？
+      placeholder: 例如：iPhone 15、IG 內建瀏覽器

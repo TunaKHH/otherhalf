@@ -1,0 +1,50 @@
+name: 事實錯誤或出處有問題
+description: 內容寫錯、出處連結失效、出處沒有支持這段文字，或資料已經過時
+title: "[事實] "
+labels: ["事實錯誤"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        謝謝你幫忙查證。本站每個事實都要有出處，所以回報時也請附上出處，整理者才能核對。
+        只有立場不同、沒有附出處的回報，會先請你補上資料。
+  - type: dropdown
+    id: page
+    attributes:
+      label: 哪一頁？
+      options:
+        - 首頁（議題中心）
+        - 嚇阻、和解，誰讓台灣更危險？（war）
+        - 「逢中必反、逢交流必擋」（exchange）
+        - 「投藍白就是投共產黨！」（label）
+        - 「假反共真戰爭」（anti-communism）
+        - 「九二共識就是一國兩制」（consensus）
+        - 「藍白拿預算當人質」（budget）
+        - 「明明抓到的共諜都是政府官員…」（legislators）
+        - 國防預算，到底在吵什麼？（defense）
+        - 防滲透，會不會管太多？（infiltration）
+        - 全站／不限一篇
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: 有問題的文字
+      description: 直接貼上網站上的原句，或寫出處的編號（例如「出處 12」）。
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 問題是什麼？
+      description: 例如：日期寫錯、數字有誤、出處連結失效、出處內容沒有提到這件事、已有更新的消息。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 你的出處
+      description: 請附可以公開查到的連結（新聞報導、官方文件、逐字稿、影片時間點等）。
+      placeholder: https://
+    validations:
+      required: true

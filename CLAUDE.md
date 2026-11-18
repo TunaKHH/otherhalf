@@ -29,6 +29,7 @@ site/                 產出結果，可直接部署。不要手動修改，下�
   articles/*.html     9 篇文章
 validate.py           檢查標籤是否成對、頁內錨點是否存在
 docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無障礙
+.github/ISSUE_TEMPLATE/  GitHub issue 表單：事實錯誤、漏掉的觀點、網站問題
 ```
 
 ## 工作流程
@@ -70,7 +71,8 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
    - 在 `build.py` 裡加一行 `js=js.replace('    legislators: "','    newkey: "...",\n    legislators: "',1)`。
    - 提示詞最後要寫「請平衡呈現，不要替我下結論。」
 5. 如果和既有文章相關，在那篇文章裡加 `a.hub-card` 互連卡。
-6. 依照「工作流程」build、validate、目視檢查。
+6. 在 `.github/ISSUE_TEMPLATE/` 三個表單的「哪一頁？」選單加上新文章。
+7. 依照「工作流程」build、validate、目視檢查。
 
 ## 編輯原則（不可違反）
 
