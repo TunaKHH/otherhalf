@@ -119,6 +119,13 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
   - 間距與圓角沒有 token 化（5/10）。
 - [ ] IG 限時動態圖卡已經過時（還是舊主題「抗中保台只是口號」），需要依新網站重做。
 
+## 版本管理
+
+- GitHub：**https://github.com/TunaKHH/half-truth-site**（**公開** repo，`main` 追蹤 `origin/main`）。git log 就是公開的修正紀錄，commit 訊息要寫清楚改了什麼、為什麼改。
+- commit 作者一律用 GitHub noreply 地址（本 repo 的 `user.email` 已設定），避免公開 repo 露出本機主機名稱或個人 email。
+- 已推上 GitHub 的 commit 不要 rebase、amend 或 force push；要修正就再加一個 commit。
+- 推上公開 repo 等於公開內容，涉及文章內容的 commit 推送前要先符合「編輯原則」。
+
 ## 部署
 
 - 正式網址：**https://half-truth.pages.dev**（Cloudflare Pages 專案 `half-truth`，production branch `main`，2026-11-18 首次上線）。
