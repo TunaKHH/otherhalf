@@ -8,8 +8,9 @@ def between(start,end):
     i=src.index(start)+len(start); j=src.index(end,i)
     return src[i:j].strip('\n')
 css=between('<style>\n','</style>')
-# 彈窗的 CSS 改由下方 GLOSS_CSS 提供：從 legacy CSS 拿掉原本那段，在同一位置換成 GLOSS_CSS（維持 cascade 順序）
-_gs=css.index('.term {'); _ge=css.index('\n',css.index('.gloss-close:focus-visible {'))
+# 彈窗的 CSS 在下方 GLOSS_CSS，插在 legacy CSS 的「/* 名詞說明彈窗 */」註解後面（維持 cascade 順序）
+_gm='/* 名詞說明彈窗 */\n'; assert css.count(_gm)==1, '找不到彈窗 CSS 的插入標記'
+_gs=css.index(_gm)+len(_gm)
 # 提示詞按鈕的 JS：legacy 檔裡含 PROMPTS 的那個 <script>
 _p=src.index('var PROMPTS')
 js_prompts=src[src.rindex('<script>',0,_p)+len('<script>'):src.index('</script>',_p)].strip('\n')
@@ -53,7 +54,7 @@ GLOSS_CSS=r'''.term { font: inherit; color: inherit; background: none; border: 0
 .gloss-close { flex: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer; }
 .gloss-close:hover { border-color: var(--accent); color: var(--accent); }
 .gloss-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }'''
-css=css[:_gs]+GLOSS_CSS+css[_ge:]
+css=css[:_gs]+GLOSS_CSS+'\n'+css[_gs:]
 GLOSS_JS=r'''(function () {
   var TERMS = {
     mac: {
