@@ -36,9 +36,11 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 1. 修改 `build.py`。
 2. 執行 `uv run --no-project --python 3.12 build.py`。
 3. 執行 `uv run --no-project --python 3.12 validate.py`，必須全部 OK。
+4. 用瀏覽器開 `site/index.html` 檢查，手機寬度（約 390px）也要看。
+5. commit，訊息寫清楚改了什麼、為什麼改（git log 同時是公開的修正紀錄）。
+6. 需要上線時，依「部署」一節部署。
 
 `build.py` 需要 Python 3.12 以上（f-string 裡用到反斜線）。macOS 內建的 `python3` 是 3.9，直接跑會出現 SyntaxError，所以一律透過 `uv` 執行。
-4. 用瀏覽器開 `site/index.html` 檢查，手機寬度（約 390px）也要看。
 
 **CSS 要寫在 `build.py` 裡的 `css` 字串**。直接改 `site/css/site.css` 會在下次 build 時被覆蓋。JS 的修改同理：寫成 `build.py` 裡的 `js.replace(...)`。
 
@@ -99,7 +101,7 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 
 ## 待辦（使用者尚未決定的建議）
 
-- [ ] **整理者署名**：footer 目前是佔位文字「整理者：[你的名字或 IG 帳號]」，上線前必須填。
+- [x] **整理者署名**：已填「Tuna（Threads @tuna._run）」，連到 Threads 個人頁（2026-11-18）。
 - [ ] 首頁加一段「為什麼最近一直在吵」：朝小野大的背景，讓整個網站有一條主線。
 - [ ] budget：2025 年刪減 2075 億那段，補上藍白自己的說法（嚴格把關、還錢於民）。
 - [ ] budget：標題「人質」是報導轉述，可以找有影片或逐字稿的原話替換。
@@ -119,6 +121,14 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 
 ## 部署
 
-- 網站原本發布在 claude.ai artifact，Claude Code **無法更新那個連結**。
-- `site/` 是純靜態檔，可以直接部署到 GitHub Pages、Cloudflare Pages 或 Netlify。
-- 部署平台要由使用者決定。換網址後，IG 上已分享的舊連結需要另外處理。
+- 正式網址：**https://half-truth.pages.dev**（Cloudflare Pages 專案 `half-truth`，production branch `main`，2026-11-18 首次上線）。
+- 部署指令（在專案根目錄執行，先 build、validate、commit）：
+
+  ```
+  pnpm dlx wrangler pages deploy site --project-name half-truth --branch main --commit-hash "$(git rev-parse HEAD)" --commit-message "$(git log -1 --format=%s)"
+  ```
+
+- 部署用 **wrangler**，這是使用者核准的例外：`cf` CLI 不支援舊版 Pages 部署（會回「Legacy Pages is not supported」），也沒有把登入權杖交給 wrangler 的方式。wrangler 有自己的 OAuth 登入（`pnpm dlx wrangler login`），已在這台電腦登入過。查詢帳號、專案等其他 Cloudflare 操作仍用 `cf`。
+- 新建的 pages.dev 網域前幾分鐘可能回 522，等一下就正常。
+- `.html` 網址會被 Pages 308 轉到無副檔名的網址（例如 `/articles/war`），站內連結照常可用。
+- 舊版發布在 claude.ai artifact，Claude Code **無法更新那個連結**。IG 上已分享的舊連結需要另外處理。
