@@ -128,7 +128,11 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 
 ## 部署
 
-- 正式網址：**https://half-truth.pages.dev**（Cloudflare Pages 專案 `half-truth`，production branch `main`，2026-11-18 首次上線）。
+- 正式網址：**https://otherhalf.tuna-hub.com**（2026-11-18 綁定）。對外分享一律用這個網址。
+  - 這是 Cloudflare Pages 專案 `half-truth` 的自訂網域，production branch `main`。
+  - DNS 是 `tuna-hub.com` zone 裡的 proxied CNAME `otherhalf` → `half-truth.pages.dev`。
+  - `https://half-truth.pages.dev` 仍可用，但只當備用網址。
+- 品牌方向：之後若擴充其他政治觀點內容，以 `otherhalf`（沒說的另一半）當品牌名，用路徑分欄目（例如 `/issues/`），不要另開子網域。使用者考慮之後買專屬網域（例如 `otherhalf.tw`），屆時從 `otherhalf.tuna-hub.com` 設 301 轉址。
 - 部署指令（在專案根目錄執行，先 build、validate、commit）：
 
   ```
