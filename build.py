@@ -2,11 +2,127 @@ import os
 ROOT=os.path.dirname(os.path.abspath(__file__))
 import re, os
 src=open(os.path.join(ROOT,'src','legacy-index.html'),encoding='utf-8').read()
-L=src.split('\n')
-def lines(a,b): return '\n'.join(L[a-1:b])
-css=lines(15,255)
-dialog=lines(610,623)
-js=lines(626,693)+'\n'+lines(697,751)
+def between(start,end):
+    # 依標記擷取 legacy-index.html 的區塊（不含標記本身），找不到或不唯一就直接報錯
+    assert src.count(start)==1, f'標記不唯一：{start}'
+    i=src.index(start)+len(start); j=src.index(end,i)
+    return src[i:j].strip('\n')
+css=between('<style>\n','</style>')
+# 彈窗的 CSS 改由下方 GLOSS_CSS 提供：從 legacy CSS 拿掉原本那段，在同一位置換成 GLOSS_CSS（維持 cascade 順序）
+_gs=css.index('.term {'); _ge=css.index('\n',css.index('.gloss-close:focus-visible {'))
+# 提示詞按鈕的 JS：legacy 檔裡含 PROMPTS 的那個 <script>
+_p=src.index('var PROMPTS')
+js_prompts=src[src.rindex('<script>',0,_p)+len('<script>'):src.index('</script>',_p)].strip('\n')
+
+# --- 名詞說明彈窗（glossary dialog）
+# 觸發方式：<button type="button" class="term" data-term="KEY" aria-haspopup="dialog">名詞</button>
+# 新增名詞：在下面 GLOSS_JS 的 TERMS 加一個 KEY。
+dialog=r'''<dialog class="gloss" id="gloss" aria-labelledby="gloss-title">
+  <div class="gloss-body">
+    <div class="gloss-head">
+      <div class="gloss-id">
+        <div class="gloss-side"><span class="gloss-flag" id="gloss-flag"></span><span id="gloss-sidetext"></span></div>
+        <h2 id="gloss-title"></h2>
+        <p class="full" id="gloss-full"></p>
+      </div>
+      <button type="button" class="gloss-close" id="gloss-close" aria-label="關閉說明">×</button>
+    </div>
+    <dl id="gloss-list"></dl>
+    <p class="note" id="gloss-note"></p>
+  </div>
+</dialog>'''
+GLOSS_CSS=r'''.term { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent); }
+.quote .term { text-decoration-color: var(--band-accent); }
+.term:hover { color: var(--accent); }
+.quote .term:hover { color: var(--band-accent); }
+.term:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.gloss { border: 1px solid var(--line); border-radius: 16px; padding: 0; width: min(520px, calc(100vw - 32px)); background: var(--surface); color: var(--ink); box-shadow: 0 24px 60px rgba(10, 20, 30, .25); }
+.gloss::backdrop { background: rgba(10, 16, 22, .55); }
+.gloss-body { padding: 28px 28px 24px; display: grid; gap: 16px; }
+.gloss-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.gloss-id { display: grid; gap: 10px; }
+.gloss-side { display: flex; align-items: center; gap: 12px; font-size: .85rem; font-weight: 700; letter-spacing: .08em; color: var(--muted); }
+.gloss-flag { display: inline-flex; line-height: 0; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.gloss-flag svg { display: block; width: 60px; height: 40px; }
+.gloss h2 { font-family: var(--display); font-weight: 900; font-size: 1.8rem; line-height: 1.2; }
+.gloss .full { color: var(--muted); font-size: .92rem; margin-top: 6px; }
+.gloss dl { margin: 0; display: grid; gap: 12px; }
+.gloss dt { font-size: .78rem; letter-spacing: .1em; color: var(--accent); font-weight: 700; }
+.gloss dd { margin: 2px 0 0; font-size: .97rem; line-height: 1.75; }
+.gloss .note { font-size: .88rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+.gloss-close { flex: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.gloss-close:hover { border-color: var(--accent); color: var(--accent); }
+.gloss-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }'''
+css=css[:_gs]+GLOSS_CSS+css[_ge:]
+GLOSS_JS=r'''(function () {
+  var TERMS = {
+    mac: {
+      title: "陸委會",
+      side: "台灣 · 中華民國",
+      flag: '<svg viewBox="0 0 240 160" width="60" height="40" role="img" aria-label="中華民國國旗"><rect width="240" height="160" fill="#FE0000"/><rect width="120" height="80" fill="#000095"/><polygon fill="#FFFFFF" points="60.00,10.00 55.86,24.55 64.14,24.55"/><polygon fill="#FFFFFF" points="75.00,14.02 64.14,24.55 71.31,28.69"/><polygon fill="#FFFFFF" points="85.98,25.00 71.31,28.69 75.45,35.86"/><polygon fill="#FFFFFF" points="90.00,40.00 75.45,35.86 75.45,44.14"/><polygon fill="#FFFFFF" points="85.98,55.00 75.45,44.14 71.31,51.31"/><polygon fill="#FFFFFF" points="75.00,65.98 71.31,51.31 64.14,55.45"/><polygon fill="#FFFFFF" points="60.00,70.00 64.14,55.45 55.86,55.45"/><polygon fill="#FFFFFF" points="45.00,65.98 55.86,55.45 48.69,51.31"/><polygon fill="#FFFFFF" points="34.02,55.00 48.69,51.31 44.55,44.14"/><polygon fill="#FFFFFF" points="30.00,40.00 44.55,44.14 44.55,35.86"/><polygon fill="#FFFFFF" points="34.02,25.00 44.55,35.86 48.69,28.69"/><polygon fill="#FFFFFF" points="45.00,14.02 48.69,28.69 55.86,24.55"/><circle cx="60" cy="40" r="17" fill="#000095"/><circle cx="60" cy="40" r="15" fill="#FFFFFF"/></svg>',
+      full: "中華民國行政院大陸委員會",
+      items: [
+        ["是什麼", "台灣政府負責兩岸事務的部會，隸屬行政院。"],
+        ["做什麼", "統籌兩岸政策，主管《兩岸人民關係條例》，訂定與執行兩岸交流的相關規範，並定期舉行記者會說明政府立場。"],
+        ["在北京的對口", "國台辦。兩者之間的聯繫機制自 2016 年起停擺。"],
+        ["和海基會的關係", "海基會是陸委會委託的民間團體，負責與北京的海協會進行事務性協商。"]
+      ],
+      note: "陸委會的說法代表台灣政府（行政院）的立場，不一定代表所有政黨的看法。"
+    },
+    tao: {
+      title: "國台辦",
+      side: "北京 · 中華人民共和國",
+      flag: '<svg viewBox="0 0 30 20" width="60" height="40" role="img" aria-label="中華人民共和國國旗"><rect width="30" height="20" fill="#EE1C25"/><polygon fill="#FFFF00" points="5.000,2.000 5.674,4.073 7.853,4.073 6.090,5.354 6.763,7.427 5.000,6.146 3.237,7.427 3.910,5.354 2.147,4.073 4.326,4.073"/><polygon fill="#FFFF00" points="9.143,2.514 9.619,1.966 9.246,1.343 9.914,1.628 10.391,1.080 10.328,1.803 10.996,2.088 10.288,2.251 10.224,2.975 9.851,2.352"/><polygon fill="#FFFF00" points="11.010,4.141 11.662,3.821 11.560,3.102 12.065,3.624 12.718,3.304 12.378,3.946 12.884,4.467 12.168,4.343 11.829,4.985 11.726,4.266"/><polygon fill="#FFFF00" points="11.038,6.725 11.765,6.699 11.964,6.001 12.213,6.683 12.939,6.657 12.367,7.105 12.616,7.787 12.014,7.382 11.442,7.830 11.641,7.131"/><polygon fill="#FFFF00" points="9.219,8.375 9.899,8.632 10.353,8.064 10.319,8.790 10.999,9.046 10.298,9.239 10.265,9.964 9.865,9.357 9.165,9.550 9.618,8.982"/></svg>',
+      full: "中國國務院台灣事務辦公室",
+      items: [
+        ["是什麼", "北京負責對台政策的政府機關。同時也是中共中央台灣工作辦公室，一個機構、兩塊牌子。"],
+        ["做什麼", "制定與執行對台政策，並定期舉行記者會，由發言人說明北京對台灣議題的立場。"],
+        ["在台灣的對口", "行政院大陸委員會（陸委會）。兩者之間的聯繫機制自 2016 年起停擺。"]
+      ],
+      note: "國台辦發言人的說法代表北京官方立場，本頁引用是為了呈現北京怎麼定義交流。"
+    }
+  };
+  var dlg = document.getElementById("gloss");
+  var lastTrigger = null;
+  function render(key) {
+    var t = TERMS[key];
+    if (!t) return false;
+    document.getElementById("gloss-title").textContent = t.title;
+    document.getElementById("gloss-flag").innerHTML = t.flag || "";
+    document.getElementById("gloss-sidetext").textContent = t.side || "";
+    document.getElementById("gloss-full").textContent = t.full;
+    document.getElementById("gloss-note").textContent = t.note || "";
+    var list = document.getElementById("gloss-list");
+    list.textContent = "";
+    t.items.forEach(function (it) {
+      var wrap = document.createElement("div");
+      var dt = document.createElement("dt"); dt.textContent = it[0];
+      var dd = document.createElement("dd"); dd.textContent = it[1];
+      wrap.appendChild(dt); wrap.appendChild(dd); list.appendChild(wrap);
+    });
+    return true;
+  }
+  function open(key, trigger) {
+    if (!render(key)) return;
+    lastTrigger = trigger;
+    if (typeof dlg.showModal === "function") { try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); } }
+    else { dlg.setAttribute("open", ""); }
+    document.addEventListener("keydown", onKey);
+    document.getElementById("gloss-close").focus();
+  }
+  function onKey(e) { if (e.key === "Escape") { close(); } }
+  function close() {
+    document.removeEventListener("keydown", onKey);
+    if (typeof dlg.close === "function") dlg.close(); else { dlg.removeAttribute("open"); if (lastTrigger) lastTrigger.focus(); }
+  }
+  dlg.addEventListener("close", function () { if (lastTrigger) lastTrigger.focus(); });
+  document.getElementById("gloss-close").addEventListener("click", close);
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+  document.querySelectorAll(".term[data-term]").forEach(function (b) {
+    b.addEventListener("click", function () { open(b.getAttribute("data-term"), b); });
+  });
+})();'''
+js=GLOSS_JS+'\n'+js_prompts
 open(os.path.join(ROOT,'site','css','site.css'),'w',encoding='utf-8').write(css+'''
 .backnav a.home { font-weight: 700; }
 .hub-list { display: grid; gap: 14px; }
