@@ -24,6 +24,7 @@ build.py              唯一的產生器。所有內容、CSS、JS 都在這裡�
 src/legacy-index.html 舊版單頁網站。build.py 從這裡擷取部分區塊（CSS、對話框、議題區塊、出處）
 site/                 產出結果，可直接部署。不要手動修改，下次 build 會被覆蓋
   index.html          議題中心
+  corrections.html    更正紀錄（讀者看得懂的內容修改清單）
   css/site.css
   js/site.js
   articles/*.html     9 篇文章
@@ -39,6 +40,7 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 3. 執行 `uv run --no-project --python 3.12 validate.py`，必須全部 OK。
 4. 用瀏覽器開 `site/index.html` 檢查，手機寬度（約 390px）也要看。
 5. commit，訊息寫清楚改了什麼、為什麼改（git log 同時是公開的修正紀錄）。
+   - 讀者看得到的內容修改（文字、出處、提示詞），commit 後要在 `corrections` 最上面加一筆：原本、現在、原因用一般讀者的話寫，`commit` 欄填剛才那個 commit 的 hash，再 build 並另外 commit。版面與程式的修改不用記。
 6. 需要上線時，依「部署」一節部署。
 
 `build.py` 需要 Python 3.12 以上（f-string 裡用到反斜線）。macOS 內建的 `python3` 是 3.9，直接跑會出現 SyntaxError，所以一律透過 `uv` 執行。
@@ -56,6 +58,7 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 | `btn(key, dark=False)` | 「複製提示詞，問你自己的 AI」按鈕，`key` 對應 `site.js` 裡的 `PROMPTS` |
 | `cards` list | 首頁卡片的順序與文字。標題以「開頭時，卡片會自動顯示「沒說的另一半是？」 |
 | `planned` list | 整理中的議題（虛線卡） |
+| `corrections` list | 更正紀錄頁的資料，最新的放最上面。類型分「更正／補充／調整」 |
 
 內文中引用出處的寫法：`<sup><a href="#s105">105</a></sup>`，寫全域編號，`page()` 會換成該頁的編號。
 
