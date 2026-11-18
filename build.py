@@ -55,26 +55,6 @@ GLOSS_CSS=r'''.term { font: inherit; color: inherit; background: none; border: 0
 .gloss-close:hover { border-color: var(--accent); color: var(--accent); }
 .gloss-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }'''
 css=css[:_gs]+GLOSS_CSS+'\n'+css[_gs:]
-CORR_CSS='''
-/* 更正紀錄頁 */
-.corr-kinds { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: .9rem; color: var(--muted); }
-.corr-kinds li { display: flex; align-items: center; gap: 8px; }
-.corr-kind { display: inline-block; padding: 2px 10px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: .8rem; font-weight: 700; letter-spacing: .1em; }
-.corr-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
-.corr { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 14px; }
-.corr-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: .88rem; color: var(--muted); }
-.corr h3 { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.5; }
-.corr dl { margin: 0; display: grid; grid-template-columns: 4em 1fr; gap: 10px 12px; }
-.corr dt { font-size: .85rem; font-weight: 700; color: var(--muted); padding-top: .2em; }
-.corr dd { margin: 0; line-height: 1.8; }
-.corr-diff { justify-self: start; font-size: .9rem; padding-block: 10px; }
-.corr-note { margin: 0; font-size: .9rem; color: var(--muted); }
-@media (max-width: 600px) {
-  .corr { padding: 18px; }
-  .corr dl { grid-template-columns: 1fr; gap: 2px; }
-  .corr dd + dt { margin-top: 10px; }
-}'''
-css+=CORR_CSS
 GLOSS_JS=r'''(function () {
   var TERMS = {
     mac: {
@@ -268,7 +248,7 @@ def page(fname,title,desc,body,depth):
     <p>整理方式：只收錄有報導可查的作為與各方公開說明的理由，不收錄未經證實的指控。資料截至 2026 年 11 月 18 日。</p>
     <p class="author">整理者：<a href="https://www.threads.com/@tuna._run" target="_blank" rel="noopener">Tuna（Threads @tuna._run）</a></p>
     <p>發現錯誤或漏掉的觀點，歡迎到 Threads 私訊整理者，或到 <a href="https://github.com/TunaKHH/half-truth-site/issues" target="_blank" rel="noopener">GitHub 開 issue</a> 指正。</p>
-    <p>本站原始碼公開，每次修正都留有紀錄：<a href="{pre}corrections.html">更正紀錄</a>・<a href="https://github.com/TunaKHH/half-truth-site" target="_blank" rel="noopener">GitHub 原始碼</a></p>
+    <p>本站原始碼公開，每次修正都留有紀錄：<a href="https://github.com/TunaKHH/half-truth-site" target="_blank" rel="noopener">GitHub 原始碼</a>・<a href="https://github.com/TunaKHH/half-truth-site/commits/main" target="_blank" rel="noopener">修正紀錄</a></p>
   </div>
 </footer>
 {dialog}
@@ -582,73 +562,6 @@ hub=f'''  <section class="shell hero" aria-labelledby="title">
 '''
 page('index.html','他們講一半，你別只聽一半','藍綠都有只講一半的時候。從常聽到的說法出發，把被省略的那一半補回來，每段附出處，不替你下結論。',hub+'</main>\n',0)
 
-# --- 更正紀錄（corrections.html）
-# 只記讀者看得到的內容修改；版面與程式的修改看 GitHub commit 紀錄。最新的放最上面。
-# 欄位：(日期, 頁面檔名或 None 表示全站, 類型, 標題, 原本, 現在, 原因, commit)
-# 類型：更正＝原本寫錯；補充＝加入原本沒收錄的觀點或資料；調整＝原本沒錯，改寫得更貼切
-corrections=[
- ('2026-11-18',None,'調整','「複製提示詞」的結尾統一加上「請平衡呈現，不要替我下結論。」',
-  '有 8 個提示詞沒有這句結尾。',
-  '全站每個提示詞結尾都有這句，之後新增的提示詞也會自動加上。',
-  '少了這句，AI 比較容易直接給出立場，和本站「不替讀者下結論」的原則不一致。',
-  'ee80a8a'),
- ('2026-11-18','war','更正','八二三砲戰段落：出處連結對調、兩處用詞和原文不符',
-  '兩份國軍刊物的出處連結對調，段落裡三處引用點進去都找不到對應內容。文中寫北京「宣布停火」，並稱高旻生的文章是「同時期國軍的研究」。',
-  '兩個連結改正，出處標題改用原文篇名。「宣布停火」改為原文的「暫停砲擊 7 天」；「同時期」改為「同一份國軍研究」，因為該文發表於 2018 年。同時補上該文註腳引述的中共官方說法，和國軍刊物的讀法並列。',
-  '逐頁核對兩份國防部 PDF 原文時發現。',
-  'fa357af'),
- ('2026-11-18','war','調整','嚇阻路線的歷史案例，從冷戰美蘇換成 1958 年八二三砲戰',
-  '用冷戰時期美蘇的核嚇阻當例子。',
-  '改用八二三砲戰，並寫入北京當時的用意（牽制美國、聲援中東），讓這段同時呈現兩方的讀法。',
-  '核嚇阻和台灣的處境不太對應，八二三砲戰是台海本身的案例。',
-  '4916f0a'),
-]
-_titles={h.split('/')[-1][:-5]:ti for h,t,ti,d in cards}
-def _corr(c):
-    date,art,kind,title,before,after,why,sha=c
-    where=f'<a href="articles/{art}.html">{_titles[art]}</a>' if art else '全站'
-    y,m,d=date.split('-')
-    return f'''      <li class="corr">
-        <div class="corr-meta"><span class="corr-kind">{kind}</span><time datetime="{date}">{int(y)} 年 {int(m)} 月 {int(d)} 日</time><span>{where}</span></div>
-        <h3>{title}</h3>
-        <dl>
-          <dt>原本</dt><dd>{before}</dd>
-          <dt>現在</dt><dd>{after}</dd>
-          <dt>原因</dt><dd>{why}</dd>
-        </dl>
-        <a class="corr-diff" href="https://github.com/TunaKHH/half-truth-site/commit/{sha}" target="_blank" rel="noopener">看這次逐字改了什麼（GitHub）</a>
-      </li>'''
-corr_body=f'''  <section class="shell hero" aria-labelledby="title">
-    <div class="marker">更正紀錄</div>
-    <h1 id="title">我們改過什麼</h1>
-    <p class="after">寫錯就改，改了就留紀錄。這裡列出每一次讀者看得到的內容修改，最新的在最上面。</p>
-  </section>
-
-  <section class="shell chapter" aria-labelledby="h-corr">
-    <header>
-      <div class="marker">共 {len(corrections)} 筆</div>
-      <h2 id="h-corr">修改清單</h2>
-    </header>
-    <ul class="corr-kinds">
-      <li><span class="corr-kind">更正</span>原本寫錯</li>
-      <li><span class="corr-kind">補充</span>加入原本沒收錄的觀點或資料</li>
-      <li><span class="corr-kind">調整</span>原本沒錯，改寫得更貼切</li>
-    </ul>
-    <ol class="corr-list">
-{chr(10).join(_corr(c) for c in corrections)}
-    </ol>
-    <p class="corr-note">紀錄從 2026 年 11 月 18 日網站搬到目前網址、公開原始碼開始。版面和程式的修改沒有列在這裡，完整紀錄在 <a href="https://github.com/TunaKHH/half-truth-site/commits/main" target="_blank" rel="noopener">GitHub</a>。</p>
-  </section>
-
-  <section class="shell chapter" aria-labelledby="h-report">
-    <header>
-      <div class="marker">回報</div>
-      <h2 id="h-report">發現錯誤？</h2>
-    </header>
-    <p>請附上可以公開查到的出處，到 <a href="https://github.com/TunaKHH/half-truth-site/issues/new/choose" target="_blank" rel="noopener">GitHub 開 issue</a>，或到 <a href="https://www.threads.com/@tuna._run" target="_blank" rel="noopener">Threads 私訊整理者</a>。核對後會修正，並記在這一頁。</p>
-  </section>
-'''
-page('corrections.html','更正紀錄｜他們講一半，你別只聽一半','本站每一次內容修改的紀錄：原本寫什麼、改成什麼、為什麼改。',corr_body+'</main>\n',0)
 
 # --- Article 5: label (green claim)
 sources.update({
