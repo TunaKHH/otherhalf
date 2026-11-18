@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>民進黨都不交流？</title>
+<meta name="description" content="「民進黨都不交流」對了一半。兩岸交流的三個層次、雙方各自的限制、九二共識的三種定義，以及三黨在國安議題上的取捨，每段附出處。">
+<meta property="og:title" content="民進黨都不交流？">
+<meta property="og:description" content="兩岸交流卡在哪裡？雙方各自的限制、九二共識的三種定義、三黨的取捨，每段附出處。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* 與 IG 圖卡同一套語言：冷灰紙面、深墨藍、單一藍色強調；大號襯線標題是唯一的張力，其餘安靜。三黨同一樣式，不用政黨色。 */
+  --ground: #eef1f4;
+  --surface: #ffffff;
+  --ink: #15202b;
+  --muted: #4a5866;
+  --line: #c9d1d9;
+  --accent: #1f4e79;
+  --ok: #2f6b4f;
+  --band: #15202b;
+  --band-ink: #eef1f4;
+  --band-muted: #a9b6c2;
+  --band-accent: #8fb8d6;
+  --display: "Noto Serif TC", "Songti TC", serif;
+  --body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #12181e; --surface: #1a2229; --ink: #e8edf1; --muted: #a3b0bc;
+    --line: #2c3742; --accent: #8fb8d6; --ok: #8cc5a6;
+    --band: #0b1015; --band-ink: #e8edf1; --band-muted: #93a1ae; --band-accent: #8fb8d6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #12181e; --surface: #1a2229; --ink: #e8edf1; --muted: #a3b0bc;
+  --line: #2c3742; --accent: #8fb8d6; --ok: #8cc5a6;
+  --band: #0b1015; --band-ink: #e8edf1; --band-muted: #93a1ae; --band-accent: #8fb8d6;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.8; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+
+.shell { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
+
+/* 章節標記：與圖卡上的「— 1 / 5」相同 */
+.marker { display: flex; align-items: center; gap: 12px; font-size: .85rem; font-weight: 500; letter-spacing: .2em; color: var(--muted); }
+.marker::before { content: ""; width: 36px; height: 4px; background: var(--accent); }
+
+/* 頂部導覽 */
+.topnav { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--ground) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.topnav .shell { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.topnav a { flex: none; font-size: .88rem; text-decoration: none; color: var(--ink); padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.topnav a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Hero：唯一放大的地方 */
+.hero { padding-block: 72px 56px; display: grid; gap: 40px; }
+.hero .lede { font-size: 1.15rem; color: var(--muted); }
+.hero h1 { font-family: var(--display); font-weight: 900; font-size: clamp(2.6rem, 8.5vw, 5.4rem); line-height: 1.22; letter-spacing: -.01em; }
+.qpair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.q { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 26px 28px; display: grid; gap: 8px; align-content: start; }
+.q b { font-size: .85rem; letter-spacing: .15em; color: var(--accent); }
+.q p { font-family: var(--display); font-weight: 600; font-size: clamp(1.3rem, 3.2vw, 1.75rem); line-height: 1.45; }
+.hero .after { font-size: 1.1rem; max-width: 60ch; }
+.hero .meta { font-size: .88rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* 一般章節 */
+.chapter { padding-block: 64px; border-top: 3px solid var(--ink); display: grid; gap: 28px; }
+.chapter > header { display: grid; gap: 14px; }
+.chapter h2 { font-family: var(--display); font-weight: 900; font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.3; }
+.chapter .intro { color: var(--muted); max-width: 62ch; font-size: 1.05rem; }
+
+/* 背景事實：共諜長條 */
+.stat-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; display: grid; gap: 14px; align-content: start; }
+.panel h3 { font-size: 1rem; font-weight: 700; }
+.big { font-family: var(--display); font-weight: 900; font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.bars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: end; height: 190px; padding-top: 10px; border-bottom: 1px solid var(--line); }
+.bar { display: grid; justify-items: center; align-content: end; gap: 6px; height: 100%; }
+.bar span { font-size: .9rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.bar i { display: block; width: 100%; max-width: 54px; background: var(--line); border-radius: 6px 6px 0 0; }
+.bar.hi i { background: var(--accent); }
+.years { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; text-align: center; font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.small { font-size: .85rem; color: var(--muted); }
+.stack { display: grid; gap: 16px; }
+
+/* 交流三層 */
+.layers { display: grid; gap: 14px; counter-reset: layer; }
+.layer { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 24px 28px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 20px; align-items: center; }
+.layer .n { font-family: var(--display); font-weight: 900; font-size: 2.6rem; line-height: 1; color: var(--accent); grid-row: span 2; }
+.layer h3 { font-size: 1.25rem; font-weight: 700; }
+.layer > .layer-body { grid-column: 1 / 3; display: grid; gap: 12px; }
+.pill { justify-self: end; font-size: .82rem; font-weight: 700; border: 2px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 2px 14px; white-space: nowrap; }
+.pill.ok { border-color: var(--ok); color: var(--ok); }
+.callout { background: var(--band); color: var(--band-ink); border-radius: 14px; padding: 26px 28px; font-size: 1.1rem; font-weight: 500; }
+
+/* 議題對照 */
+.issue { display: grid; gap: 14px; }
+.issue + .issue { margin-top: 28px; }
+.issue-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.issue-head h3 { font-family: var(--display); font-weight: 900; font-size: 1.6rem; }
+.issue-head span { color: var(--muted); }
+.parties { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.party { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: grid; gap: 12px; align-content: start; }
+.party header { display: grid; gap: 4px; }
+.party h4 { margin: 0; font-size: 1.2rem; }
+.party .stance { font-size: .85rem; font-weight: 700; color: var(--accent); }
+.party dl { margin: 0; display: grid; gap: 10px; }
+.party dt { font-size: .78rem; letter-spacing: .1em; color: var(--muted); }
+.party dd { margin: 0; font-size: .96rem; line-height: 1.7; }
+.party.na { border-style: dashed; }
+.common { font-size: .95rem; color: var(--muted); padding-left: 16px; border-left: 3px solid var(--line); }
+sup a { text-decoration: none; font-size: .7em; padding-inline: 1px; }
+
+/* 總結 */
+.summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.summary div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; display: grid; gap: 6px; }
+.summary strong { font-family: var(--display); font-size: 1.3rem; }
+
+
+/* 名詞說明彈窗 */
+.term { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent); }
+.quote .term { text-decoration-color: var(--band-accent); }
+.term:hover { color: var(--accent); }
+.quote .term:hover { color: var(--band-accent); }
+.term:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.gloss { border: 1px solid var(--line); border-radius: 16px; padding: 0; width: min(520px, calc(100vw - 32px)); background: var(--surface); color: var(--ink); box-shadow: 0 24px 60px rgba(10, 20, 30, .25); }
+.gloss::backdrop { background: rgba(10, 16, 22, .55); }
+.gloss-body { padding: 28px 28px 24px; display: grid; gap: 16px; }
+.gloss-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+.gloss-id { display: grid; gap: 10px; }
+.gloss-side { display: flex; align-items: center; gap: 12px; font-size: .85rem; font-weight: 700; letter-spacing: .08em; color: var(--muted); }
+.gloss-flag { display: inline-flex; line-height: 0; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.gloss-flag svg { display: block; width: 60px; height: 40px; }
+.gloss h2 { font-family: var(--display); font-weight: 900; font-size: 1.8rem; line-height: 1.2; }
+.gloss .full { color: var(--muted); font-size: .92rem; margin-top: 6px; }
+.gloss dl { margin: 0; display: grid; gap: 12px; }
+.gloss dt { font-size: .78rem; letter-spacing: .1em; color: var(--accent); font-weight: 700; }
+.gloss dd { margin: 2px 0 0; font-size: .97rem; line-height: 1.75; }
+.gloss .note { font-size: .88rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+.gloss-close { flex: none; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.gloss-close:hover { border-color: var(--accent); color: var(--accent); }
+.gloss-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+/* 複製提示詞 */
+.ask-ai-wrap { display: grid; gap: 10px; justify-items: start; }
+.ask-ai { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 18px; font: inherit; font-size: .92rem; font-weight: 700; color: var(--accent); background: var(--surface); border: 1.5px solid var(--accent); border-radius: 999px; cursor: pointer; }
+.ask-ai:hover { background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+.ask-ai:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ask-ai.done { color: var(--ok); border-color: var(--ok); }
+.ask-ai.on-dark { color: var(--band-accent); background: transparent; border-color: var(--band-accent); }
+.ask-ai.on-dark:hover { background: color-mix(in srgb, var(--band-accent) 14%, transparent); }
+.ask-ai-icon { display: inline-flex; }
+.ask-ai-fallback { width: 100%; max-width: 720px; min-height: 140px; font: inherit; font-size: .9rem; line-height: 1.7; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); resize: vertical; }
+.ask-ai-hint { font-size: .85rem; color: var(--muted); }
+.close .ask-ai-hint { color: var(--band-muted); }
+
+
+/* 修正版新增 */
+.tldr { margin: 0; padding: 0; list-style: none; counter-reset: t; display: grid; gap: 12px; max-width: 760px; }
+.tldr li { counter-increment: t; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 2px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.tldr li::before { content: counter(t); grid-row: span 2; font-family: var(--display); font-weight: 900; font-size: 1.3rem; color: var(--accent); line-height: 1.5; }
+.tldr-head { font-weight: 700; font-size: 1.08rem; color: var(--ink); text-decoration: none; }
+.tldr-head::after { content: " ↓"; color: var(--accent); }
+.tldr-head:hover { color: var(--accent); }
+.tldr li.key { border: 2px solid var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); padding: 20px 20px; }
+.tldr li.key .tldr-head { font-family: var(--display); font-weight: 900; font-size: clamp(1.25rem, 3.6vw, 1.55rem); line-height: 1.45; }
+.tldr span { font-size: .97rem; line-height: 1.75; }
+
+section[id], [id^="h-"], #defs { scroll-margin-top: 72px; }
+.verdict { font-family: var(--display); font-weight: 900; font-size: clamp(1.5rem, 4.5vw, 2.2rem); color: var(--accent); }
+.sides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sides > div, .defs-grid > div { background: var(--ground); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.sides b, .defs-grid b { font-size: .8rem; letter-spacing: .1em; color: var(--accent); }
+.sides p, .defs-grid p { font-size: .95rem; line-height: 1.75; }
+.defs { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px 28px; display: grid; gap: 14px; }
+.defs h3 { font-family: var(--display); font-weight: 900; font-size: 1.3rem; }
+.defs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ev { margin: 4px 0 0; padding-left: 1.2em; display: grid; gap: 8px; font-family: var(--body); font-size: .95rem; line-height: 1.75; }
+.q .ev li { font-weight: 400; }
+.faq-tag { justify-self: start; font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; }
+.ask-ai-status { font-size: .85rem; color: var(--ok); min-height: 1em; }
+.close .ask-ai-status { color: var(--band-accent); }
+.author { font-weight: 500; color: var(--ink); }
+
+/* 北京的說法 */
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.quote { margin: 0; background: var(--band); color: var(--band-ink); border-radius: 14px; padding: 26px 28px; display: grid; gap: 14px; align-content: space-between; }
+.quote blockquote { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; line-height: 1.7; }
+.quote blockquote::before { content: "「"; color: var(--band-accent); }
+.quote blockquote::after { content: "」"; color: var(--band-accent); }
+.quote figcaption { font-size: .85rem; color: var(--band-muted); }
+.quote sup a { color: var(--band-accent); }
+
+/* 常見說法 */
+.faq { display: grid; gap: 16px; }
+.faq-item { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 28px; display: grid; gap: 18px; }
+.faq-item h3 { font-family: var(--display); font-weight: 900; font-size: clamp(1.25rem, 3.4vw, 1.55rem); line-height: 1.45; }
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+.split > div { display: grid; gap: 4px; align-content: start; }
+.split b { font-size: .82rem; letter-spacing: .1em; color: var(--accent); }
+.split p { font-size: .97rem; line-height: 1.75; }
+.analogy { font-weight: 500; padding-left: 16px; border-left: 3px solid var(--accent); }
+
+/* 結尾深色帶 */
+.close { background: var(--band); color: var(--band-ink); margin-top: 64px; }
+.close .shell { padding-block: 72px; display: grid; gap: 32px; }
+.close .marker { color: var(--band-muted); }
+.close .marker::before { background: var(--band-accent); }
+.close h2 { font-family: var(--display); font-weight: 900; font-size: clamp(2.2rem, 7vw, 4rem); line-height: 1.25; }
+.close ol { margin: 0; padding-left: 1.3em; display: grid; gap: 12px; max-width: 62ch; color: var(--band-ink); font-size: 1.05rem; }
+.close ol li::marker { color: var(--band-accent); font-weight: 700; }
+.close p { color: var(--band-muted); max-width: 62ch; }
+
+/* 出處 */
+.sources { padding-block: 56px 72px; display: grid; gap: 20px; }
+.sources h2 { font-family: var(--display); font-weight: 900; font-size: 1.6rem; }
+.sources ol { margin: 0; padding-left: 1.8em; columns: 2; column-gap: 40px; font-size: .9rem; color: var(--muted); }
+.sources li { break-inside: avoid; margin-bottom: 8px; overflow-wrap: anywhere; }
+.sources li:target { color: var(--ink); background: color-mix(in srgb, var(--accent) 14%, transparent); border-radius: 4px; }
+.foot { font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; }
+
+/* 進場：一次、從可見狀態開始 */
+@media (prefers-reduced-motion: no-preference) {
+  .hero > * { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .hero > *:nth-child(2) { animation-delay: .08s; }
+  .hero > *:nth-child(3) { animation-delay: .16s; }
+  .hero > *:nth-child(4) { animation-delay: .24s; }
+  @keyframes rise { from { transform: translateY(10px); opacity: .55; } to { transform: none; opacity: 1; } }
+}
+
+@media (max-width: 760px) {
+  .qpair, .stat-grid, .parties, .summary, .split, .quotes { grid-template-columns: minmax(0, 1fr); }
+  .sources ol { columns: 1; }
+  .layer { grid-template-columns: minmax(0, 1fr); }
+  .layer .n { font-size: 2rem; }
+  .layer .pill { grid-column: 1; justify-self: start; }
+  .layer > .layer-body { grid-column: 1; }
+  .sides, .defs-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-block: 48px 44px; }
+  .chapter { padding-block: 48px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="章節">
+  <div class="shell">
+    <a href="#layers">交流卡在哪</a>
+    <a href="#facts">反共是假議題嗎</a>
+    <a href="#issues">三黨取捨</a>
+    <a href="#faq">常見說法</a>
+    <a href="#ask">問問自己</a>
+    <a href="#refs">出處</a>
+  </div>
+</nav>
+
+<main>
+  <section class="shell hero" aria-labelledby="title">
+    <div class="marker">你可能聽過這句話</div>
+    <h1 id="title">「民進黨都不交流！」</h1>
+    <p class="verdict">這句話對了一半。</p>
+    <ol class="tldr">
+      <li class="key"><a class="tldr-head" href="#defs">北京要求先承認「九二共識」，官方才肯談</a><span>官方對話從 2016 年停擺至今。陸委會要求不設前提；而北京、國民黨、民進黨對九二共識的定義都不一樣。<sup><a href="#s3">3</a></sup><sup><a href="#s4">4</a></sup><sup><a href="#s28">28</a></sup></span></li>
+      <li><a class="tldr-head" href="#layers">民間往來沒有斷</a><span>2025 年超過 500 萬人次。<sup><a href="#s5">5</a></sup> 但雙方都設了限制：北京曾暫停陸客自由行，台灣有禁團令，也收緊了公職人員赴陸。<sup><a href="#s24">24</a></sup><sup><a href="#s26">26</a></sup><sup><a href="#s27">27</a></sup></span></li>
+      <li><a class="tldr-head" href="#facts">「反共是假議題嗎」要分開看</a><span>口號有沒有被操作，各方看法不同；滲透確實存在，共諜起訴人數上升，涉案者不分藍綠。<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup></span></li>
+    </ol>
+    <p class="after">這個前提能不能接受，答案在你。依據都在下面 ↓</p>
+    <div class="stack">
+      <p class="meta"><span>資料截至 2026 年 11 月 18 日</span><span>每段附報導出處</span><span>不打算告訴你該支持誰</span></p>
+    </div>
+  </section>
+
+  <section id="layers" class="shell chapter" aria-labelledby="h-layers">
+    <header>
+      <div class="marker">01</div>
+      <h2 id="h-layers">「交流」到底卡在哪裡？</h2>
+      <p class="intro">說「不交流」的時候，大家講的常常不是同一件事。觀光探親、政黨往來、政府談判，各自卡在不同的地方，有的卡在台灣，有的卡在北京。</p>
+    </header>
+    <div class="quotes">
+      <figure class="quote">
+        <blockquote>只要民進黨當局承認體現一個中國原則的「九二共識」，兩岸兩會就能重啟對話溝通機制。</blockquote>
+        <figcaption><button type="button" class="term" data-term="tao" aria-haspopup="dialog">國台辦</button>發言人朱鳳蓮，2026 年 1 月<sup><a href="#s3">3</a></sup></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>與合法民選政府透過不設前提的溝通對話</blockquote>
+        <figcaption><button type="button" class="term" data-term="mac" aria-haspopup="dialog">陸委會</button>呼籲北京，2025 年 10 月<sup><a href="#s4">4</a></sup></figcaption>
+      </figure>
+    </div>
+    <div class="layers">
+      <div class="layer">
+        <h3>民間交流</h3>
+        <span class="pill ok">雙方都有限制</span>
+        <div class="layer-body">
+          <p>往來沒有中斷，2025 年兩岸人員往來超過 500 萬人次。<sup><a href="#s5">5</a></sup></p>
+          <div class="sides">
+            <div><b>北京設的限制</b><p>2019 年 8 月片面暫停陸客來台自由行；2026 年 4 月宣布將恢復上海、福建居民來台個人遊試點。<sup><a href="#s24">24</a></sup><sup><a href="#s25">25</a></sup></p></div>
+            <div><b>台灣設的限制</b><p>台灣團客赴陸的「禁團令」仍未解除；政府要求陸客來台須經雙方觀光協會協商後實施。政院草案擬將公務員赴陸全面改為許可制。<sup><a href="#s26">26</a></sup><sup><a href="#s24">24</a></sup><sup><a href="#s7">7</a></sup></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="layer">
+        <h3>政黨與地方交流</h3>
+        <span class="pill">北京：以九二共識為基礎</span>
+        <div class="layer-body">
+          <p>北京表示，願在一中原則與九二共識基礎上，與台灣各黨派交換意見。<sup><a href="#s19">19</a></sup> 2026 年國民黨副主席率團出席海峽論壇；政黨人士不在政府管制範圍內。<sup><a href="#s18">18</a></sup></p>
+          <p>台灣政府則把海峽論壇定位為統戰平台，2026 年起禁止中央與地方政府人員參加，台東縣長的申請被拒。<sup><a href="#s27">27</a></sup><sup><a href="#s18">18</a></sup></p>
+        </div>
+      </div>
+      <div class="layer">
+        <h3>官方對話</h3>
+        <span class="pill">北京：以九二共識為前提</span>
+        <div class="layer-body">
+          <p><button type="button" class="term" data-term="mac" aria-haspopup="dialog">陸委會</button>與<button type="button" class="term" data-term="tao" aria-haspopup="dialog">國台辦</button>、海基會與海協會的協商，自 2016 年起停擺。北京要求先承認九二共識；陸委會要求不設前提。<sup><a href="#s3">3</a></sup><sup><a href="#s4">4</a></sup></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="defs" id="defs">
+      <h3>「九二共識」，三方各自怎麼說</h3>
+      <div class="defs-grid">
+        <div><b>北京</b><p>2019 年習近平定調為「海峽兩岸同屬一個中國，共同努力謀求國家統一」。北京官方媒體強調其中沒有「各表」。<sup><a href="#s28">28</a></sup><sup><a href="#s29">29</a></sup></p></div>
+        <div><b>國民黨</b><p>主張九二共識就是「一中各表」，雙方各自表述「一個中國」的涵義，並表示不接受北京「沒有各表」的說法。<sup><a href="#s29">29</a></sup></p></div>
+        <div><b>民進黨</b><p>承認 1992 年香港會談的歷史事實，但不承認存在「九二共識」，認為北京的定義等同一個中國、一國兩制。<sup><a href="#s28">28</a></sup></p></div>
+      </div>
+    </div>
+
+    <p class="callout">所以「民進黨都不交流」對了一半：台灣政府確實收緊了公職人員、公務員與團客赴陸的規定。但民間往來仍有數百萬人次，北京也曾片面暫停自由行；官方對話停擺，卡在雙方對「九二共識」的根本分歧。</p>
+    <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="exchange"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+  </section>
+
+  <section id="facts" class="shell chapter" aria-labelledby="h-facts">
+    <header>
+      <div class="marker">02</div>
+      <h2 id="h-facts">那「反共」是假議題嗎？</h2>
+      <p class="intro">這句話其實混了兩件事。</p>
+    </header>
+    <div class="qpair">
+      <div class="q">
+        <b>問題 A</b>
+        <p>「抗中保台」是不是被政黨拿來當選舉口號？</p>
+        <ul class="ev">
+          <li>2025 年對國民黨立委的大罷免，31 個選區全數未通過。<sup><a href="#s30">30</a></sup> 有分析認為，民進黨需要重新建構「抗中保台」的論述。<sup><a href="#s31">31</a></sup></li>
+          <li>「中共同路人」一詞近年被大量用在政治攻防，有評論認為標籤被濫用，反而讓人對真正的威脅無感。<sup><a href="#s32">32</a></sup></li>
+          <li>另一方面，也有評論認為點名「在地協力者」能提高社會對滲透的警覺。<sup><a href="#s36">36</a></sup></li>
+        </ul>
+      </div>
+      <div class="q">
+        <b>問題 B</b>
+        <p>中國的壓力，是不是真的存在？</p>
+        <ul class="ev">
+          <li>共諜案起訴人數上升，涉案者不分藍綠，見下方數據。<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup></li>
+          <li>2026 年 6 月，中國海警船編隊在台灣東部海域巡航，官媒稱是在展示管轄權。<sup><a href="#s37">37</a></sup></li>
+        </ul>
+      </div>
+    </div>
+    <div class="stat-grid">
+      <div class="panel">
+        <h3>共諜案起訴人數</h3>
+        <div class="big">16 → 64 人</div>
+        <div class="bars" role="img" aria-label="共諜案起訴人數：2021 年 16 人、2022 年 10 人、2023 年 48 人、2024 年 64 人">
+          <div class="bar"><span>16</span><i style="height:25%"></i></div>
+          <div class="bar"><span>10</span><i style="height:15.6%"></i></div>
+          <div class="bar"><span>48</span><i style="height:75%"></i></div>
+          <div class="bar hi"><span>64</span><i style="height:100%"></i></div>
+        </div>
+        <div class="years" aria-hidden="true"><span>2021</span><span>2022</span><span>2023</span><span>2024</span></div>
+        <p class="small">國安局統計。<sup><a href="#s1">1</a></sup> 人數增加的原因之一，是 2019、2022 年兩次修法擴大了罪名。<sup><a href="#s20">20</a></sup></p>
+      </div>
+      <div class="stack">
+        <div class="panel">
+          <h3>六成以上是軍人</h3>
+          <p>2024 年起訴的 64 人中，現役軍人 28 人、退役軍人 15 人。<sup><a href="#s1">1</a></sup></p>
+        </div>
+        <div class="panel">
+          <h3>涉案者不分藍綠</h3>
+          <p>民進黨前幕僚黨工有人被判刑；國民黨前議員助理也有案件在查；也有國民黨背景人士因收中資介選被判刑定讞。<sup><a href="#s2">2</a></sup><sup><a href="#s35">35</a></sup></p>
+        </div>
+      </div>
+    </div>
+    <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="spies"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+  </section>
+
+  <section id="issues" class="shell chapter" aria-labelledby="h-issues">
+    <header>
+      <div class="marker">03</div>
+      <h2 id="h-issues">三個政黨，三種取捨</h2>
+      <p class="intro">每一黨都看兩件事：實際做了什麼，以及他們自己怎麼解釋。</p>
+    </header>
+
+    <div class="issue">
+      <div class="issue-head"><h3>防範滲透</h3><span>要不要給政府更多工具，管制對中國的接觸？</span></div>
+      <div class="parties">
+        <article class="party">
+          <header><h4>民進黨</h4><span class="stance">主動擴大管制</span></header>
+          <dl>
+            <div><dt>做了什麼</dt><dd>2019 年提案通過《反滲透法》。<sup><a href="#s6">6</a></sup> 2025 年底政院草案將公務員赴陸改為全面許可制，並把立委納入管制範圍。<sup><a href="#s7">7</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>立委容易接觸機密與地方人士，「不是不能去，而是要透明」。<sup><a href="#s8">8</a></sup></dd></div>
+          </dl>
+        </article>
+        <article class="party">
+          <header><h4>國民黨</h4><span class="stance">反對現行版本</span></header>
+          <dl>
+            <div><dt>做了什麼</dt><dd>2019 年《反滲透法》三讀時不參與表決並離場抗議。<sup><a href="#s6">6</a></sup> 反對立委赴中須許可。<sup><a href="#s9">9</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>三讀時抗議「綠色恐怖、戒嚴復辟」。<sup><a href="#s6">6</a></sup> 牛煦庭認為「抓到的共諜都是政府官員」，卻立法限制民代並不合理；陳玉珍認為多交流才能帶來善意。<sup><a href="#s9">9</a></sup><sup><a href="#s8">8</a></sup></dd></div>
+          </dl>
+        </article>
+        <article class="party">
+          <header><h4>民眾黨</h4><span class="stance">強調執法公平</span></header>
+          <dl>
+            <div><dt>做了什麼</dt><dd>較少主導這類法案；在民進黨幕僚共諜案中，要求一併搜索相關高層。<sup><a href="#s10">10</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>質疑辦案「辦藍不辦綠」，要求同一標準。<sup><a href="#s10">10</a></sup></dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="common">有共識的例子：2022 年國安法增訂經濟間諜罪，朝野協商同意禁止採購中國軍品的條款。<sup><a href="#s11">11</a></sup></p>
+    <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="infiltration"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+    </div>
+
+    <div class="issue">
+      <div class="issue-head"><h3>國防預算</h3><span>2026 年國防特別條例：花多少、買什麼、怎麼監督？</span></div>
+      <div class="parties">
+        <article class="party">
+          <header><h4>民進黨</h4><span class="stance">1.25 兆 · 8 年</span></header>
+          <dl>
+            <div><dt>主張</dt><dd>支持政院版，包含對美軍購、無人機、AI 與國內軍工委製。<sup><a href="#s12">12</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>要建立彼此支援、環環相扣的整體防衛體系；透過特別預算的長期訂單，建構國防自主生產能力。<sup><a href="#s33">33</a></sup><sup><a href="#s34">34</a></sup></dd></div>
+          </dl>
+        </article>
+        <article class="party">
+          <header><h4>國民黨</h4><span class="stance">3800 億 + N</span></header>
+          <dl>
+            <div><dt>主張</dt><dd>先編對美軍購，未定項目另立第二階段條例；最後與民眾黨合推兩期共 7800 億（3000 + 4800 億）並通過。<sup><a href="#s13">13</a></sup><sup><a href="#s12">12</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>錢要用在刀口上、杜絕弊端；未定項目不宜空白授權。<sup><a href="#s12">12</a></sup><sup><a href="#s13">13</a></sup></dd></div>
+          </dl>
+        </article>
+        <article class="party">
+          <header><h4>民眾黨</h4><span class="stance">4000 億 · 一年一期</span></header>
+          <dl>
+            <div><dt>主張</dt><dd>改為一年一期編列，後續預算須經立法院同意；後與國民黨合推 7800 億版本。<sup><a href="#s14">14</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>強化國會監督；項目以美方已宣布售台的武器為主。<sup><a href="#s14">14</a></sup></dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="common">三黨版本都包含對美軍購，分歧在總金額、國內委製與商購、審查方式。<sup><a href="#s12">12</a></sup> 通過版本上限 7800 億，比政院版少約 4700 億。<sup><a href="#s15">15</a></sup> 國防部批評在野版本缺乏戰略構想<sup><a href="#s14">14</a></sup>；美國國務院表示進一步延後經費是對中共的讓步<sup><a href="#s15">15</a></sup>；在野則認為未定項目不宜空白授權。<sup><a href="#s13">13</a></sup></p>
+    <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="defense"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+    </div>
+
+    <div class="issue">
+      <div class="issue-head"><h3>言論管制</h3><span>為敵方宣傳的言論，要不要納入處罰？</span></div>
+      <div class="parties">
+        <article class="party">
+          <header><h4>民進黨</h4><span class="stance">納入裁罰</span></header>
+          <dl>
+            <div><dt>主張</dt><dd>國安法政院版擬將「支持、鼓吹以武力對台發動戰爭」納入行政裁罰。<sup><a href="#s16">16</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>黃捷認為，任何鼓吹戰爭的宣傳應以法律禁止，這是民主國家的共識。<sup><a href="#s17">17</a></sup></dd></div>
+          </dl>
+        </article>
+        <article class="party">
+          <header><h4>國民黨</h4><span class="stance">反對</span></header>
+          <dl>
+            <div><dt>主張</dt><dd>要求先辦公聽會，再審條文。<sup><a href="#s16">16</a></sup></dd></div>
+            <div><dt>自己的理由</dt><dd>羅智強認為定義不清、權力集中於行政機關，恐怕重新製造思想犯與政治犯；王鴻薇認為草案箝制人民言論自由。<sup><a href="#s16">16</a></sup><sup><a href="#s17">17</a></sup></dd></div>
+          </dl>
+        </article>
+        <article class="party na">
+          <header><h4>民眾黨</h4><span class="stance">資料不足</span></header>
+          <dl>
+            <div><dt>主張</dt><dd>目前沒有找到民眾黨針對這項草案的明確表態，暫不歸類。</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="common">草案仍在立法院審查中，結果可能改變。</p>
+    <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="speech"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <section class="shell chapter" aria-labelledby="h-sum">
+    <header>
+      <div class="marker">04</div>
+      <h2 id="h-sum">整體看起來的優先順序</h2>
+    </header>
+    <div class="summary">
+      <div><strong>民進黨</strong><p>國安優先，接受政府有更大權限。</p></div>
+      <div><strong>國民黨</strong><p>交流與言論自由優先，對政府擴權有戒心。</p></div>
+      <div><strong>民眾黨</strong><p>監督與程序優先；國防條例與國民黨合推版本。</p></div>
+    </div>
+    <p class="small">這只是粗略的概括，同一黨裡每位立委也不太一樣。想看個別立委怎麼投票，立法院議事暨公報系統查得到。</p>
+  </section>
+
+  <section id="faq" class="shell chapter" aria-labelledby="h-faq">
+    <header>
+      <div class="marker">05</div>
+      <h2 id="h-faq">常見說法</h2>
+      <p class="intro">藍綠兩邊都有幾句常聽到的話。一句一句拆開來看：哪裡有根據，哪裡說過頭了。</p>
+    </header>
+    <div class="faq">
+      <article class="faq-item">
+        <span class="faq-tag">常聽到的偏藍說法</span>
+        <h3>「反共根本是假議題，民進黨自己就抓出一堆共諜。」</h3>
+        <div class="split">
+          <div><b>滲透是否存在</b><p>共諜被起訴、判刑，說明滲透是真的。2024 年起訴 64 人，六成以上是現役或退役軍人，涉案者不分藍綠。<sup><a href="#s1">1</a></sup><sup><a href="#s2">2</a></sup></p></div>
+          <div><b>民進黨有沒有防好</b><p>總統府、外交部長、立法院長身邊都曾有人涉案，安全查核有明顯漏洞。涉案者遭起訴、開除黨籍；2026 年 6 月高院二審多人減刑，外交部長前助理改判無罪，在野黨批評判太輕，要求法院公開判決理由。<sup><a href="#s21">21</a></sup><sup><a href="#s22">22</a></sup><sup><a href="#s23">23</a></sup></p></div>
+        </div>
+        <p class="analogy">像銀行抓到內鬼：不代表銀行支持盜領，但代表內控要檢討。</p>
+        <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="spies"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+      </article>
+
+      <article class="faq-item">
+        <span class="faq-tag">常聽到的偏綠說法</span>
+        <h3>「投藍白就是投共產黨，藍白都是中共在地協力者。」</h3>
+        <div class="split">
+          <div><b>有根據的部分</b><p>曾代表國民黨參選的地方人士，因收中國資助招待村里長赴中旅遊、介入選舉，被判刑定讞。<sup><a href="#s35">35</a></sup> 國民黨副主席也率團出席了政府定位為統戰平台的海峽論壇。<sup><a href="#s18">18</a></sup></p></div>
+          <div><b>站不住的部分</b><p>被判刑的是個人，不是政黨。支持九二共識、主張交流是政治立場，不等於受中共指示；有評論指出，把政策不同的人都歸為「同路人」是標籤政治。<sup><a href="#s36">36</a></sup><sup><a href="#s32">32</a></sup></p></div>
+        </div>
+        <p class="analogy">反過來也一樣：黨內有人收錢，不代表整個政黨收錢；但要看政黨怎麼處理。</p>
+        <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="label"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+      </article>
+
+      <article class="faq-item">
+        <span class="faq-tag">常聽到的偏藍說法</span>
+        <h3>「武力輸、人力輸，要認清現實。」</h3>
+        <div class="split">
+          <div><b>事實</b><p>兩岸軍力差距很大，各方都不否認。</p></div>
+          <div><b>分歧在「所以呢」</b><p>一種看法是避免刺激、多交流降溫；另一種看法是投資不對稱戰力，讓對方動武的代價變高。國防特別條例的金額之爭，就是這個分歧的具體版本。<sup><a href="#s12">12</a></sup></p></div>
+        </div>
+        <p class="analogy">差距大家都看得到，吵的是看到之後要怎麼辦。</p>
+        <div class="ask-ai-wrap"><button type="button" class="ask-ai" data-prompt="realism"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<section id="ask" class="close" aria-labelledby="h-ask">
+  <div class="shell">
+    <div class="marker">06</div>
+    <h2 id="h-ask">你怎麼看這個前提？</h2>
+    <ol>
+      <li>國安、交流、言論自由、預算監督，你最在意哪一個？最不能讓步的是哪一個？</li>
+      <li>「政黨把議題當口號」和「威脅是否真實存在」，你會分開判斷嗎？</li>
+      <li>北京以承認「九二共識」作為官方對話的前提，而各方對九二共識的定義不同。你可以接受這個前提嗎？為什麼？</li>
+    </ol>
+    <div class="ask-ai-wrap"><button type="button" class="ask-ai on-dark" data-prompt="parity"><span class="ask-ai-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span class="ask-ai-label">複製提示詞，問你自己的 AI</span></button><span class="ask-ai-status" role="status" aria-live="polite"></span></div>
+    <p>每個人在意的東西不一樣，答案本來就會不同。想聊的話，歡迎拿這頁去找想法不一樣的朋友。</p>
+  </div>
+</section>
+
+<section id="refs" class="shell sources" aria-labelledby="h-refs">
+  <h2 id="h-refs">出處</h2>
+  <ol>
+    <li id="s1"><a href="https://news.pts.org.tw/article/733310">公視：國安局指去年共諜案起訴 64 人</a></li>
+    <li id="s2"><a href="https://www.twreporter.org/topics/espionage-and-the-cracks-of-democracy">報導者：潛台諜影</a></li>
+    <li id="s3"><a href="https://uanalyze.com.tw/articles/4215845272">優分析（轉載鉅亨網）：國台辦稱承認九二共識即可重啟兩會對話</a></li>
+    <li id="s4"><a href="https://www.cna.com.tw/news/acn/202510100257.aspx">中央社：陸委會呼籲不設前提的溝通對話</a></li>
+    <li id="s5"><a href="https://www.ctee.com.tw/news/20260107700989-430801">工商時報：國台辦 2026 首場記者會</a></li>
+    <li id="s6"><a href="https://www.cna.com.tw/news/firstnews/201912315003.aspx?topic=1972">中央社：反滲透法三讀通過</a></li>
+    <li id="s7"><a href="https://uanalyze.com.tw/articles/7405443520">優分析（轉載鉅亨網）：政院通過公務員赴陸全面許可制草案</a></li>
+    <li id="s8"><a href="https://news.ltn.com.tw/news/politics/paper/1737516">自由時報：立委赴中須許可，朝野觀點</a></li>
+    <li id="s9"><a href="https://www.nownews.com/news/6769176">NOWnews：立委赴中須許可，藍綠觀點</a></li>
+    <li id="s10"><a href="https://newtalk.tw/news/view/2025-05-05/969202">新頭殼：民眾黨立委質疑辦藍不辦綠</a></li>
+    <li id="s11"><a href="https://news.pts.org.tw/article/581742">公視：國安法修正增訂經濟間諜罪</a></li>
+    <li id="s12"><a href="https://news.pts.org.tw/article/807389">公視：藍白共推 7800 億國防條例</a></li>
+    <li id="s13"><a href="https://uanalyze.com.tw/index.php/articles/7294948514">優分析（轉載鉅亨網）：國防特別預算付委審查</a></li>
+    <li id="s14"><a href="https://wantrich.chinatimes.com/news/20260127900045-420501">旺得富：民眾黨團版國防條例</a></li>
+    <li id="s15"><a href="https://newtalk.tw/news/view/2026-05-10/1034251">新頭殼：國防條例以 7800 億通過，美國務院回應</a></li>
+    <li id="s16"><a href="https://newtalk.tw/news/view/2026-01-07/1013611">新頭殼：國安法修正草案審查</a></li>
+    <li id="s17"><a href="https://news.pts.org.tw/article/806115">公視：國安法逐條審查，鼓吹戰爭言論罰則爭議</a></li>
+    <li id="s18"><a href="https://news.pts.org.tw/article/811650">公視：海峽論壇，地方首長申請遭拒、政黨不受管制</a></li>
+    <li id="s19"><a href="https://www.worldjournal.com/wj/amp/story/121475/8771740">世界日報：國台辦稱認同一中可協商</a></li>
+    <li id="s20"><a href="https://www.twreporter.org/a/espionage-and-the-cracks-of-democracy-2">報導者：國安案件刑期與修法</a></li>
+    <li id="s21"><a href="https://udn.com/news/story/6656/9590159">聯合報：民進黨前黨工共諜案二審改判，國民黨團籲公開判決理由</a></li>
+    <li id="s22"><a href="https://newtalk.tw/news/view/2026-04-02/1027829">新頭殼：朱政騏涉共諜案遭民進黨開除黨籍</a></li>
+    <li id="s23"><a href="https://www.storm.mg/article/5354007">風傳媒：民進黨新北黨部 2 人涉共諜案遭除名</a></li>
+    <li id="s24"><a href="https://www.taiwan.net.tw/m1.aspx?sNo=0044383">交通部觀光署：呼籲小兩會協商（2026/4/20）</a></li>
+    <li id="s25"><a href="https://uanalyze.com.tw/articles/6912550456">優分析（轉載鉅亨網）：中國宣布恢復上海、福建來台個人遊試點</a></li>
+    <li id="s26"><a href="https://news.pts.org.tw/article/794005">公視：觀光業者盼解除赴陸禁團令</a></li>
+    <li id="s27"><a href="https://udn.com/news/story/6656/9546135">聯合報：陸委會首度禁止地方政府參加海峽論壇</a></li>
+    <li id="s28"><a href="https://www.nownews.com/news/5359266">NOWnews：九二共識的變調</a></li>
+    <li id="s29"><a href="https://www.rfa.org/cantonese/news/92consensus-09112022074533.html">自由亞洲電台：中國官媒稱九二共識無「各表」，國民黨回應</a></li>
+    <li id="s30"><a href="https://www.twreporter.org/a/data-reporter-2025-823-recall-results">報導者：2025 大罷免 31 案全數不通過</a></li>
+    <li id="s31"><a href="https://www.thenewslens.com/article/257653">關鍵評論網：大罷免結果與外媒分析</a></li>
+    <li id="s32"><a href="https://www.thenewslens.com/article/159442">關鍵評論網評論：「中共同路人」標籤的濫用</a></li>
+    <li id="s33"><a href="https://wantrich.chinatimes.com/news/20260513900714-420101">旺得富：賴清德評國防條例通過版本</a></li>
+    <li id="s34"><a href="https://news.pts.org.tw/article/800733">公視：國防條例審查，國防部談無人機與國防自主</a></li>
+    <li id="s35"><a href="https://newtalk.tw/news/view/2026-07-29/1050136">新頭殼（中央社）：林雪峰違反反滲透法判刑定讞</a></li>
+    <li id="s36"><a href="https://www.chinatimes.com/opinion/20250624003729-262110">中國時報評論：「在地協力者」概念的雙面刃</a></li>
+    <li id="s37"><a href="https://www.thenewslens.com/article/268366">關鍵評論網：日菲劃界與中國海警東部海域巡航</a></li>
+  </ol>
+  <div class="foot">
+    <p>整理方式：只收錄有報導可查的作為與各黨公開說明的理由，不收錄未經證實的指控。</p>
+    <p class="author">整理者：[你的名字或 IG 帳號]</p>
+    <p>發現錯誤或漏掉的觀點，歡迎私訊整理者指正。</p>
+  </div>
+</section>
+
+
+<dialog class="gloss" id="gloss" aria-labelledby="gloss-title">
+  <div class="gloss-body">
+    <div class="gloss-head">
+      <div class="gloss-id">
+        <div class="gloss-side"><span class="gloss-flag" id="gloss-flag"></span><span id="gloss-sidetext"></span></div>
+        <h2 id="gloss-title"></h2>
+        <p class="full" id="gloss-full"></p>
+      </div>
+      <button type="button" class="gloss-close" id="gloss-close" aria-label="關閉說明">×</button>
+    </div>
+    <dl id="gloss-list"></dl>
+    <p class="note" id="gloss-note"></p>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var TERMS = {
+    mac: {
+      title: "陸委會",
+      side: "台灣 · 中華民國",
+      flag: '<svg viewBox="0 0 240 160" width="60" height="40" role="img" aria-label="中華民國國旗"><rect width="240" height="160" fill="#FE0000"/><rect width="120" height="80" fill="#000095"/><polygon fill="#FFFFFF" points="60.00,10.00 55.86,24.55 64.14,24.55"/><polygon fill="#FFFFFF" points="75.00,14.02 64.14,24.55 71.31,28.69"/><polygon fill="#FFFFFF" points="85.98,25.00 71.31,28.69 75.45,35.86"/><polygon fill="#FFFFFF" points="90.00,40.00 75.45,35.86 75.45,44.14"/><polygon fill="#FFFFFF" points="85.98,55.00 75.45,44.14 71.31,51.31"/><polygon fill="#FFFFFF" points="75.00,65.98 71.31,51.31 64.14,55.45"/><polygon fill="#FFFFFF" points="60.00,70.00 64.14,55.45 55.86,55.45"/><polygon fill="#FFFFFF" points="45.00,65.98 55.86,55.45 48.69,51.31"/><polygon fill="#FFFFFF" points="34.02,55.00 48.69,51.31 44.55,44.14"/><polygon fill="#FFFFFF" points="30.00,40.00 44.55,44.14 44.55,35.86"/><polygon fill="#FFFFFF" points="34.02,25.00 44.55,35.86 48.69,28.69"/><polygon fill="#FFFFFF" points="45.00,14.02 48.69,28.69 55.86,24.55"/><circle cx="60" cy="40" r="17" fill="#000095"/><circle cx="60" cy="40" r="15" fill="#FFFFFF"/></svg>',
+      full: "中華民國行政院大陸委員會",
+      items: [
+        ["是什麼", "台灣政府負責兩岸事務的部會，隸屬行政院。"],
+        ["做什麼", "統籌兩岸政策，主管《兩岸人民關係條例》，訂定與執行兩岸交流的相關規範，並定期舉行記者會說明政府立場。"],
+        ["在北京的對口", "國台辦。兩者之間的聯繫機制自 2016 年起停擺。"],
+        ["和海基會的關係", "海基會是陸委會委託的民間團體，負責與北京的海協會進行事務性協商。"]
+      ],
+      note: "陸委會的說法代表台灣政府（行政院）的立場，不一定代表所有政黨的看法。"
+    },
+    tao: {
+      title: "國台辦",
+      side: "北京 · 中華人民共和國",
+      flag: '<svg viewBox="0 0 30 20" width="60" height="40" role="img" aria-label="中華人民共和國國旗"><rect width="30" height="20" fill="#EE1C25"/><polygon fill="#FFFF00" points="5.000,2.000 5.674,4.073 7.853,4.073 6.090,5.354 6.763,7.427 5.000,6.146 3.237,7.427 3.910,5.354 2.147,4.073 4.326,4.073"/><polygon fill="#FFFF00" points="9.143,2.514 9.619,1.966 9.246,1.343 9.914,1.628 10.391,1.080 10.328,1.803 10.996,2.088 10.288,2.251 10.224,2.975 9.851,2.352"/><polygon fill="#FFFF00" points="11.010,4.141 11.662,3.821 11.560,3.102 12.065,3.624 12.718,3.304 12.378,3.946 12.884,4.467 12.168,4.343 11.829,4.985 11.726,4.266"/><polygon fill="#FFFF00" points="11.038,6.725 11.765,6.699 11.964,6.001 12.213,6.683 12.939,6.657 12.367,7.105 12.616,7.787 12.014,7.382 11.442,7.830 11.641,7.131"/><polygon fill="#FFFF00" points="9.219,8.375 9.899,8.632 10.353,8.064 10.319,8.790 10.999,9.046 10.298,9.239 10.265,9.964 9.865,9.357 9.165,9.550 9.618,8.982"/></svg>',
+      full: "中國國務院台灣事務辦公室",
+      items: [
+        ["是什麼", "北京負責對台政策的政府機關。同時也是中共中央台灣工作辦公室，一個機構、兩塊牌子。"],
+        ["做什麼", "制定與執行對台政策，並定期舉行記者會，由發言人說明北京對台灣議題的立場。"],
+        ["在台灣的對口", "行政院大陸委員會（陸委會）。兩者之間的聯繫機制自 2016 年起停擺。"]
+      ],
+      note: "國台辦發言人的說法代表北京官方立場，本頁引用是為了呈現北京怎麼定義交流。"
+    }
+  };
+  var dlg = document.getElementById("gloss");
+  var lastTrigger = null;
+  function render(key) {
+    var t = TERMS[key];
+    if (!t) return false;
+    document.getElementById("gloss-title").textContent = t.title;
+    document.getElementById("gloss-flag").innerHTML = t.flag || "";
+    document.getElementById("gloss-sidetext").textContent = t.side || "";
+    document.getElementById("gloss-full").textContent = t.full;
+    document.getElementById("gloss-note").textContent = t.note || "";
+    var list = document.getElementById("gloss-list");
+    list.textContent = "";
+    t.items.forEach(function (it) {
+      var wrap = document.createElement("div");
+      var dt = document.createElement("dt"); dt.textContent = it[0];
+      var dd = document.createElement("dd"); dd.textContent = it[1];
+      wrap.appendChild(dt); wrap.appendChild(dd); list.appendChild(wrap);
+    });
+    return true;
+  }
+  function open(key, trigger) {
+    if (!render(key)) return;
+    lastTrigger = trigger;
+    if (typeof dlg.showModal === "function") { try { dlg.showModal(); } catch (e) { dlg.setAttribute("open", ""); } }
+    else { dlg.setAttribute("open", ""); }
+    document.addEventListener("keydown", onKey);
+    document.getElementById("gloss-close").focus();
+  }
+  function onKey(e) { if (e.key === "Escape") { close(); } }
+  function close() {
+    document.removeEventListener("keydown", onKey);
+    if (typeof dlg.close === "function") dlg.close(); else { dlg.removeAttribute("open"); if (lastTrigger) lastTrigger.focus(); }
+  }
+  dlg.addEventListener("close", function () { if (lastTrigger) lastTrigger.focus(); });
+  document.getElementById("gloss-close").addEventListener("click", close);
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+  document.querySelectorAll(".term[data-term]").forEach(function (b) {
+    b.addEventListener("click", function () { open(b.getAttribute("data-term"), b); });
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var TAIL = "\n\n請用繁體中文回答，每個重點附上可查證的來源連結，並盡量平衡呈現不同立場；資料不確定或可能過時的地方請明確說明。";
+  var PROMPTS = {
+    exchange: "我想查證一個說法：「民進黨都不交流」。請幫我說明：（1）兩岸民間交流（觀光、經商、求學）目前的狀況，以及台灣政府（例如團客赴陸限制、公務員赴陸許可、禁止公職參加海峽論壇）與北京（例如 2019 年暫停陸客自由行）各自設了哪些限制；（2）政黨交流（例如國共論壇、海峽論壇）與官方對話（陸委會與國台辦、海基會與海協會）是否需要以承認「九二共識」為前提，官方聯繫從什麼時候、為什麼停擺；（3）北京、民進黨、國民黨、民眾黨各自對這件事的看法。",
+    spies: "有人說「反共是假議題，民進黨自己就抓出一堆共諜」。請幫我把這句話拆成兩個問題分別查證：（1）台灣近年共諜案起訴人數的變化與涉案者身分（例如國安局統計），以及人數變化是否與修法有關；（2）民進黨執政期間黨內人士涉入共諜案的情況、民進黨的處理方式，以及在野黨的批評。最後請說明這句話哪些部分有證據支持、哪些部分沒有。",
+    infiltration: "請比較民進黨、國民黨、民眾黨對「防範中共滲透」相關立法的立場與各自提出的理由，包括 2019 年《反滲透法》、《兩岸人民關係條例》修正（例如立委赴中國須事先許可）。請說明支持與反對的主要論點，例如國家安全、程序正義、兩岸交流、言論與行動自由。",
+    defense: "請說明 2026 年台灣國防特別條例的立法過程：行政院 1.25 兆元版本、國民黨版本、民眾黨版本，以及最後通過的版本有什麼差異？各黨分別提出了什麼理由？各方對不同版本的主要批評是什麼（例如國防部、美國政府對在野版本的批評，以及在野黨對政院版預算規模、監督與空白授權的批評）？",
+    speech: "台灣《國家安全法》修正草案擬將「支持、鼓吹以武力對台發動戰爭」的言論納入處罰。請說明這個草案的內容與目前進度、各政黨的立場與理由，以及「國家安全」和「言論自由」兩方面的主要論點。",
+    realism: "有人說「兩岸武力、人力差距很大，台灣要認清現實」。請說明兩岸軍力差距的公開數據（請註明資料來源與年份），以及面對這個差距的不同策略主張，例如交流降溫、避免刺激、發展不對稱戰力嚇阻等，各自的支持論點與主要批評。",
+    label: "有人說「投藍白就是投共產黨，國民黨和民眾黨都是中共在地協力者」。請幫我查證：（1）近年有哪些國民黨、民眾黨相關人士因接受中國資助或介入選舉被起訴或判刑，結果如何；（2）政黨層級的兩岸交流（例如出席海峽論壇、國共論壇）的實際內容，以及各方的評價；（3）支持與批評「在地協力者」「中共同路人」這類說法的主要論點。最後請說明這句話哪些部分有證據支持、哪些部分沒有。",
+    parity: "北京以承認「九二共識」、「兩岸同屬一個中國」作為兩岸官方對話的前提。請說明：「九二共識」在北京、國民黨、民進黨各自的定義有什麼差異？支持台灣接受這個前提、與反對接受的主要論點分別是什麼？這樣的對話條件算不算「對等」，各方怎麼看？"
+  };
+  function flash(btn, text) {
+    var label = btn.querySelector(".ask-ai-label");
+    var orig = label.getAttribute("data-orig") || label.textContent;
+    label.setAttribute("data-orig", orig);
+    label.textContent = text;
+    btn.classList.add("done");
+    var st = btn.parentNode.querySelector(".ask-ai-status"); if (st) { st.textContent = "提示詞已複製"; setTimeout(function () { st.textContent = ""; }, 2400); }
+    clearTimeout(btn._t);
+    btn._t = setTimeout(function () { label.textContent = orig; btn.classList.remove("done"); }, 2400);
+  }
+  function fallback(btn, text) {
+    var wrap = btn.parentNode;
+    var ta = wrap.querySelector("textarea");
+    if (!ta) {
+      var hint = document.createElement("p");
+      hint.className = "ask-ai-hint";
+      hint.textContent = "無法自動複製，請長按或全選下方文字後複製：";
+      ta = document.createElement("textarea");
+      ta.className = "ask-ai-fallback";
+      ta.readOnly = true;
+      ta.setAttribute("aria-label", "提示詞");
+      wrap.appendChild(hint);
+      wrap.appendChild(ta);
+    }
+    ta.value = text;
+    ta.focus();
+    ta.select();
+    try { ta.setSelectionRange(0, text.length); } catch (e) {}
+    var st = wrap.querySelector(".ask-ai-status"); if (st) st.textContent = "請手動複製下方文字";
+  }
+  document.querySelectorAll(".ask-ai[data-prompt]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var p = PROMPTS[btn.getAttribute("data-prompt")];
+      if (!p) return;
+      var text = p + TAIL;
+      try {
+        navigator.clipboard.writeText(text).then(function () {
+          flash(btn, "已複製，貼到你的 AI 就能問");
+        }, function () { fallback(btn, text); });
+      } catch (e) { fallback(btn, text); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
