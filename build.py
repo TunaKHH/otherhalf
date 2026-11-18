@@ -656,7 +656,8 @@ sources.update({
 81:("https://money.udn.com/money/story/6721/9367078","經濟日報（中央社）：訪談 149 名美中台菁英，台海戰爭可能性低"),
 83:("https://www.defensepriorities.org/wp-content/uploads/2025/10/DEFP_Grand_strategy_Deterrence.pdf","Defense Priorities：嚇阻與螺旋模型（引 Jervis 1976）"),
 84:("https://encyclopedia.ushmm.org/content/zh/article/neville-chamberlain","美國大屠殺紀念館百科：張伯倫與綏靖政策"),
-85:("https://n.yam.com/Article/20260617810520","蕃新聞：美伊停戰啟示，兩岸和平之路從實力到對話"),
+106:("https://www.mnd.gov.tw/File/29455","國防部網站：高旻生〈八二三砲戰勝利 60 週年－作戰整備之研究〉（2018）"),
+107:("https://www.mnd.gov.tw/File/29432","陸軍學術雙月刊第 560 期：八二三砲戰一甲子（2018/8）"),
 86:("https://www.ettoday.net/news/20180606/1184915.htm","ETtoday：1996 台海飛彈危機，美國派兩艘航母"),
 87:("https://www.britannica.com/print/article/434415","大英百科：西德東方政策（Ostpolitik）"),
 88:("https://newtalk.tw/news/view/2022-08-12/800794","新頭殼：回顧 1995–96 台海飛彈危機的起因與經過"),
@@ -711,7 +712,7 @@ a7body='''
         <p>讓步只會招來更多要求</p>
         <ul class="ev">
           <li><strong>1938 年慕尼黑協定</strong>：英法為避免戰爭，同意納粹德國併吞捷克的蘇台德區，結果沒能阻止二戰，綏靖政策因此通常被認為是失敗的。<sup><a href="#s84">84</a></sup></li>
-          <li><strong>冷戰時期的美蘇</strong>：對立極深卻沒有熱戰，有分析認為原因是相互確保毀滅的嚇阻機制。<sup><a href="#s85">85</a></sup></li>
+          <li><strong>1958 年八二三砲戰</strong>：共軍 44 天內對金門發射約 44 萬發砲彈，國軍持續運補固守，美國沒有直接參戰，只以第七艦隊協助護航運補。<sup><a href="#s106">106</a></sup> 10 月 6 日北京宣布停火，條件是美軍不再護航，之後改為「單打雙不打」，直到 1979 年美中建交才停止砲擊。國軍刊物的回顧認為，是守軍堅守讓北京轉而找下台階。<sup><a href="#s107">107</a></sup> 同時期國軍的研究也記載，毛澤東砲擊金門的用意之一是牽制美國、聲援中東。<sup><a href="#s106">106</a></sup></li>
           <li><strong>1996 年台海飛彈危機</strong>：北京在台灣首次總統直選前試射飛彈，美國派出兩個航母戰鬥群到台灣附近海域，危機最後沒有擴大。<sup><a href="#s86">86</a></sup></li>
         </ul>
       </div>
