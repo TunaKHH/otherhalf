@@ -855,6 +855,7 @@ sources.update({
 71:("https://news.tvbs.com.tw/politics/3088328","TVBS：賴清德元旦談話，投資國防等於投資和平"),
 72:("https://www.nownews.com/news/6733281","NOWnews：賴清德稱和平靠實力，國防預算目標"),
 73:("https://news.tvbs.com.tw/politics/2522055","TVBS：馬辦批「引戰總統」，賴清德回應"),
+108:("https://n.yam.com/Article/20260520613559","上報（蕃新聞轉載）：賴清德就職 2 週年談話全文（2026/5/20）"),
 74:("https://news.pts.org.tw/article/824936","公視：2026 中共軍力報告書，登陸作戰能力仍不足"),
 75:("https://newtalk.tw/news/view/2025-12-24/1011427","新頭殼：國防部引美方報告談 2027，王定宇批藍白擋預算"),
 76:("https://news.tvbs.com.tw/politics/2974360","TVBS：中共軍力報告列出可能犯台時機"),
@@ -890,7 +891,7 @@ a7body='''
         <b>嚇阻路線 · 民進黨政府</b>
         <p>和平要靠實力</p>
         <ul class="ev">
-          <li><strong>主張</strong>：增加國防投資，賴清德說「投資國防，就等於在投資和平」；國防預算目標 2030 年前達 GDP 5%。<sup><a href="#s71">71</a></sup><sup><a href="#s72">72</a></sup></li>
+          <li><strong>主張</strong>：增加國防投資，賴清德說「投資國防，就等於在投資和平」；國防預算目標 2030 年前達 GDP 5%。<sup><a href="#s71">71</a></sup><sup><a href="#s72">72</a></sup>也說「台灣願意在對等、尊嚴的原則下，與中國展開健康有序的交流」，但拒絕「以和平包裝統一」。<sup><a href="#s108">108</a></sup></li>
           <li><strong>理由</strong>：和平不能寄望侵略者的善意；接受一個中國原則的主張，「不是真正的和平」。<sup><a href="#s72">72</a></sup><sup><a href="#s68">68</a></sup></li>
           <li><strong>被批評</strong>：馬英九辦公室批評賴清德是「引戰的總統」<sup><a href="#s73">73</a></sup>；也有分析認為，純粹對抗可能引發螺旋上升的危機。<sup><a href="#s70">70</a></sup></li>
         </ul>

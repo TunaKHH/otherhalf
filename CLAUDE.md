@@ -51,7 +51,7 @@ docs/handoff-spec.md  設計規格：token、元件、狀態、響應式、無�
 
 | 名稱 | 作用 |
 |---|---|
-| `sources` dict | 全站出處，key 是全域編號。目前用到 **107**，新出處從 108 開始（85 已停用）。每頁輸出時會自動重新編號成 1..n |
+| `sources` dict | 全站出處，key 是全域編號。目前用到 **108**，新出處從 109 開始（85 已停用）。每頁輸出時會自動重新編號成 1..n |
 | `page(fname, title, desc, body, depth)` | 輸出一頁，負責重新編號出處，加上返回連結 `../index.html#card-<檔名>`、footer、名詞彈窗、script |
 | `hero(marker, h1, verdict, tldr, after)` | 文章開頭。`tldr` 是 `(錨點, 標題, 內文)` 的清單，第一項自動加 `.key` 強調 |
 | `close(h2, [問題1, 問題2], key)` | 結尾的深色帶。`key=None` 表示不放複製按鈕 |
